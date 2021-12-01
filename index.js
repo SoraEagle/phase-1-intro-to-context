@@ -92,12 +92,12 @@ function hoursWorkedOnDate(employee, time){
     //ensure timeInEvents and timeOutEvents are on same date
     for(const dayIn of timeInEvents){
         for(const dayOut of timeOutEvents){
-
+            if(employee.timeInEvents[i].date === employee.timeOutEvents[j].date)
+            let hoursWorked = Math.abs(employee.timeOutEvents.hour - employee.timeInEvents.hour);
+            //return hoursWorked;
         }
     }
-    if(employee.timeInEvents[i].date === employee.timeOutEvents[j].date)
-    let hoursWorked = Math.abs(employee.timeOutEvents.hour - employee.timeInEvents.hour);
-    //return hoursWorked;
+    
 }
 
 function wagesEarnedOnDate(employee, time){

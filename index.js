@@ -90,14 +90,14 @@ function createTimeOutEvent(employee, time){
 
 function hoursWorkedOnDate(employee, time){
     //ensure timeInEvents and timeOutEvents are on same date
-    for(const dayIn of timeInEvents){
-        for(const dayOut of timeOutEvents){
-            if(employee.timeInEvents[i].date === employee.timeOutEvents[j].date)
-            let hoursWorked = Math.abs(employee.timeOutEvents.hour - employee.timeInEvents.hour);
-            //return hoursWorked;
-        }
-    }
-    
+    let inTime = employee.timeInEvents.find((emp) => {
+        return emp.date === time;        
+    });
+    let outTime = employee.timeOutEvents.find((emp) => {
+        return emp.date === time;       
+    });
+    let hoursWorked = Math.round(Math.abs((outTime.hour - inTime.hour) / 100)); //Dividing removes "MM"from"HHMM".
+    return hoursWorked;
 }
 
 function wagesEarnedOnDate(employee, time){

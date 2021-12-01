@@ -12,24 +12,11 @@ Figure out how to turn a timestamp into a construct that allows handling cross-d
 Raising errors if timestamp is in invalid format.*/
 /*
 Function Signatures:
-    hoursWorkedOnDate 
-        Returns:
-            Hours worked, an Integer
-        Behavior:
-            Given a date, find the number of hours elapsed between that date's timeInEvent and timeOutEvent
-
     wagesEarnedOnDate
-        Arguments:
-            An employee record Object
-            A date of the form "YYYY-MM-DD"
-        Returns:
-            Pay owed
         Behavior:
             Using hoursWorkedOnDate, multiply the hours by the record's payRate to determine amount owed. Amount should be returned as a number.
 
     allWagesFor
-        Argument:
-            An employee record Object
         Returns:
             Pay owed for all dates
         Behavior:
@@ -102,6 +89,7 @@ function hoursWorkedOnDate(employee, time){
 
 function wagesEarnedOnDate(employee, time){
     //
+    //return payOwed;
 }
 
 function allWagesFor(employee){
@@ -109,5 +97,6 @@ function allWagesFor(employee){
 }
 
 function calculatePayroll(){
-    //
+    //return //pay owed to all employees on all dates, as a single sum
+    //use .reduce to create this sum
 }

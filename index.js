@@ -90,8 +90,8 @@ function createTimeOutEvent(employee, time){
 
 function hoursWorkedOnDate(employee, time){
     //ensure timeInEvents and timeOutEvents are on same date
-    for(const dayIn of ){
-        for(const dayOut of ){
+    for(const dayIn of timeInEvents){
+        for(const dayOut of timeOutEvents){
 
         }
     }

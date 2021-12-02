@@ -102,7 +102,7 @@ function allWagesFor(employee){
     // wagesEarnedOnDate(employee, eligibleDates[i]); //Need to do dynamically, using .reduce
     let total = 0;
     let wagesOwed = eligibleDates.reduce((previousValue, currentValue) => {
-        previousValue + currentValue;
+        wagesEarnedOnDate(employee, eligibleDates[previousValue] + wagesEarnedOnDate(employee, eligibleDates[currentValue]);
     });
 
     return wagesOwed;

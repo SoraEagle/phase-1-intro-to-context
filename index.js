@@ -12,28 +12,32 @@ Figure out how to turn a timestamp into a construct that allows handling cross-d
 Raising errors if timestamp is in invalid format.*/
 /*
 Function Signatures:
-    wagesEarnedOnDate
-        Behavior:
-            Using hoursWorkedOnDate, multiply the hours by the record's payRate to determine amount owed. Amount should be returned as a number.
-
-    allWagesFor
-        Returns:
-            Pay owed for all dates
-        Behavior:
-            Using wagesEarnedOnDate, accumulate the value of all dates worked by the employee in the record used as context. Amount should be returned as a number. HINT: You will need to find the available dates somehow...
-    
-    calculatePayroll
+    allWagesFor:
+    calculatePayroll:
         Argument:
             Array of employee records
         Returns:
-            Sum of pay owed to all employees for all dates, as a number
+            Sum of pay owed to all employees for all dates, as number
         Behavior:
-            Using wagesEarnedOnDate, accumulate the value of all dates worked by the employee in the record used as context. Amount should be returned as a number.
-*/
-
+            Using wagesEarnedOnDate, accumulate the value of all dates worked by the employee in the record used as context. Amount should be returned as number*/
 /*
-Time Complexity:
-
+Current Time Complexity:
+    createEmployeeRecord:
+        O(n)
+    createEmployeeRecords:
+        O(n)
+    createTimeInEvent:
+        O()
+    createTimeOutEvent:
+        O()
+    hoursWorkedOnDate:
+        O()
+    wagesEarnedOnDate:
+        O()
+    allWagesFor:
+        O()
+    calculatePayroll:
+        O()
 */
 function createEmployeeRecord(array){
     let employee = {
@@ -44,7 +48,7 @@ function createEmployeeRecord(array){
         timeInEvents: [],
         timeOutEvents: []
     };
-    
+
     return employee;
 }
 
@@ -57,7 +61,7 @@ function createEmployeeRecords(arrays){
 function createTimeInEvent(employee, time){
     let timeInStamp = {
         type: "TimeIn",
-        hour: parseInt(time.substr(11, 4)),
+        hour: parseInt(time.substr(11, 4)), //Ensure the hour variable is a number.
         date: time.substr(0, 10)
     };
 
@@ -68,7 +72,7 @@ function createTimeInEvent(employee, time){
 function createTimeOutEvent(employee, time){
     let timeOutStamp = {
         type: "TimeOut",
-        hour: parseInt(time.substr(11, 4)),
+        hour: parseInt(time.substr(11, 4)), //Ensure hour variable is a number.
         date: time.substr(0, 10)
     };
     employee.timeOutEvents.push(timeOutStamp);
@@ -76,27 +80,42 @@ function createTimeOutEvent(employee, time){
 }
 
 function hoursWorkedOnDate(employee, time){
-    //ensure timeInEvents and timeOutEvents are on same date
     let inTime = employee.timeInEvents.find((emp) => {
         return emp.date === time;        
     });
     let outTime = employee.timeOutEvents.find((emp) => {
         return emp.date === time;       
     });
-    let hoursWorked = Math.round(Math.abs((outTime.hour - inTime.hour) / 100)); //Dividing removes "MM"from"HHMM".
+    let hoursWorked = Math.round(Math.abs((outTime.hour - inTime.hour) / 100)); //Dividing removes the minutes.
     return hoursWorked;
 }
 
 function wagesEarnedOnDate(employee, time){
-    //
-    //return payOwed;
+    let payOwed = hoursWorkedOnDate(employee, time) * employee.payPerHour;
+    return parseInt(payOwed); //Amount returned as number.
 }
 
 function allWagesFor(employee){
-    //
+    //Using wagesEarnedOnDate, accumulate value of all dates worked by SINGLE employee in record used as context
+    let wages = []; //Create array to recieve wagesEarnedOnDate, per date.
+    wages.push(wagesEarnedOnDate(employee, time));
+    //Need to find the available dates
+
+    //O(n)
+    function totalWages(){
+        for(total of wages){
+            total = total + wages;
+        }
+    }
+
+    let wagesOwed = wages.reduce(totalWages);
+    return parseInt(wagesOwed);
 }
 
-function calculatePayroll(){
-    //return //pay owed to all employees on all dates, as a single sum
-    //use .reduce to create this sum
+function calculatePayroll(createEmployeeRecords){
+    //return sum of pay owed to all employees on all dates, as single sum
+    //use .map and .reduce to create this sum
+    //
+    // let payroll = .reduce();
+    //return parseInt(payOwed);
 }

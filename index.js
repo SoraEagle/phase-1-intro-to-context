@@ -12,7 +12,6 @@ Figure out how to turn a timestamp into a construct that allows handling cross-d
 Raising errors if timestamp is in invalid format.*/
 /*
 Function Signatures:
-    allWagesFor:
     calculatePayroll:
         Argument:
             Array of employee records
@@ -96,22 +95,22 @@ function wagesEarnedOnDate(employee, time){
 }
 
 function allWagesFor(employee){
-    //Using wagesEarnedOnDate, accumulate value of all dates worked by SINGLE employee in record used as context
-    let eligibleDates = employee.timeInEvents.map(element => element.date);
-    console.log(eligibleDates);
-    // wagesEarnedOnDate(employee, eligibleDates[i]); //Need to do dynamically, using .reduce
+    let eligibleDates = employee.timeInEvents.map(element => element.date); //.map the test dates
     let total = 0;
     let wagesOwed = eligibleDates.reduce((previousValue, currentValue) => {
-        wagesEarnedOnDate(employee, eligibleDates[previousValue] + wagesEarnedOnDate(employee, eligibleDates[currentValue]);
-    });
+        return previousValue + wagesEarnedOnDate(employee, currentValue);
+    }, 0);
 
     return wagesOwed;
 }
 
 function calculatePayroll(array){
-    //let  = array.map(element => ) //.map allWagesFor
-    //return sum of pay owed to all employees on all dates, as single sum
+    //Array of employee records
+    let employees = array.map(element => createEmployeeRecord(element));
+    console.log(employees);
+    //Using wagesEarnedOnDate, accumulate value of all dates worked by employee in record used as context
+    //return sum of pay owed to ALL employees on all dates, as single sum
     //use .reduce to create this sum
     // let payroll = .reduce();
-    //return parseInt(payOwed);
+    //return parseInt(payroll);
 }

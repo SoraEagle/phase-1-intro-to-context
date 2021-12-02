@@ -99,17 +99,19 @@ function allWagesFor(employee){
     //Using wagesEarnedOnDate, accumulate value of all dates worked by SINGLE employee in record used as context
     let eligibleDates = employee.timeInEvents.map(element => element.date);
     console.log(eligibleDates);
-    //use .reduce to create wagesOwed for the employee
-    // let wagesOwed = .reduce();
+    // wagesEarnedOnDate(employee, eligibleDates[i]); //Need to do dynamically
+    let total = 0;
+    let wagesOwed = eligibleDates.reduce((previousValue, currentValue) => {
+        previousValue + currentValue;
+    });
 
-    return parseInt(wagesOwed);
+    return wagesOwed;
 }
 
 function calculatePayroll(array){
     //let  = array.map(element => ) //.map allWagesFor
     //return sum of pay owed to all employees on all dates, as single sum
-    //use .map and .reduce to create this sum
-    //
+    //use .reduce to create this sum
     // let payroll = .reduce();
     //return parseInt(payOwed);
 }

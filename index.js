@@ -99,7 +99,7 @@ function allWagesFor(employee){
     //Using wagesEarnedOnDate, accumulate value of all dates worked by SINGLE employee in record used as context
     let eligibleDates = employee.timeInEvents.map(element => element.date);
     console.log(eligibleDates);
-    // wagesEarnedOnDate(employee, eligibleDates[i]); //Need to do dynamically
+    // wagesEarnedOnDate(employee, eligibleDates[i]); //Need to do dynamically, using .reduce
     let total = 0;
     let wagesOwed = eligibleDates.reduce((previousValue, currentValue) => {
         previousValue + currentValue;

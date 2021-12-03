@@ -108,19 +108,15 @@ function calculatePayroll(array){
     }));
     console.log(employees);
     
-    for (const wages of employees){
+    let payroll = .reduce(() => {
         //Calculate employee's total wages using allWagesFor(employee)
         // let employeeWages = allWagesFor(employees);
-        //use .reduce to find total wages for all employees(payroll)
+        //use .reduce to find total allWagesFor for all employees(payroll)
         //return 
-    }
+    }, 0);
     //return payroll
 
     //Using wagesEarnedOnDate, accumulate value of all dates worked by employee in record used as context
     //return sum of pay owed to ALL employees on all dates, as single sum
     //use .reduce to create this sum
-    // let payroll = .reduce({
-        //
-    //}, 0);
-    //return parseInt(payroll);
 }

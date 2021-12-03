@@ -108,7 +108,7 @@ function calculatePayroll(array){
     }));
     console.log(employees);
     
-    let payroll = .reduce(() => {
+    let payroll = .reduce((previous, current) => {
         //Calculate employee's total wages using allWagesFor(employee)
         // let employeeWages = allWagesFor(employees);
         //use .reduce to find total allWagesFor for all employees(payroll)

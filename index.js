@@ -18,13 +18,13 @@ Function Signatures:
 /*
 Current Time Complexity:
     createEmployeeRecord:
-        O(n)
+        O(1)
     createEmployeeRecords:
         O(n)
     createTimeInEvent:
-        O()
+        O(1)
     createTimeOutEvent:
-        O()
+        O(1)
     hoursWorkedOnDate:
         O()
     wagesEarnedOnDate:
@@ -32,7 +32,7 @@ Current Time Complexity:
     allWagesFor:
         O()
     calculatePayroll:
-        O()
+        O(?)
 */
 function createEmployeeRecord(array){ //Object that will be used as an argument/parameter for other functions.
     let employee = {
@@ -108,12 +108,12 @@ function calculatePayroll(array){
     }));
     console.log(employees);
     
-    //for (const wages of employees)Loop?
-    //Calculate employee's total wages using allWagesFor
-    //allWagesFor(employee)
-    //use .reduce to find total wages for all employees(payroll)
-    //return 
-    
+    for (const wages of employees){
+        //Calculate employee's total wages using allWagesFor(employee)
+        let employeeWages = allWagesFor(employee);
+        //use .reduce to find total wages for all employees(payroll)
+        //return 
+    }
     //return payroll
 
     //Using wagesEarnedOnDate, accumulate value of all dates worked by employee in record used as context

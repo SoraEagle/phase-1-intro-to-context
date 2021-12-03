@@ -104,13 +104,15 @@ function calculatePayroll(array){
         firstName: employee.firstName, 
         familyName: employee.familyName,
         title: employee.title,
-        payPerHour: employee.payPerHour
+        payPerHour: employee.payPerHour,
+        // timeInEvents: employee.timeInEvents,
+        // timeOutEvents: employee.timeOutEvents
     }));
     console.log(employees);
     
     for (const wages of employees){
         //Calculate employee's total wages using allWagesFor(employee)
-        let employeeWages = allWagesFor(employee);
+        // let employeeWages = allWagesFor(employees);
         //use .reduce to find total wages for all employees(payroll)
         //return 
     }

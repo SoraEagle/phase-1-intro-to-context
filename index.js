@@ -107,10 +107,11 @@ function calculatePayroll(array){
         payPerHour: employee.payPerHour
     }));
     console.log(employees);
+
+    let employeeWages = allWagesFor(employees);
     
-    let payroll = .reduce((previous, current) => {
+    let payroll = employees.reduce((previous, current) => {
         //Calculate employee's total wages using allWagesFor(employee)
-        // let employeeWages = allWagesFor(employees);
         //use .reduce to find total allWagesFor for all employees(payroll)
         //return 
     }, 0);

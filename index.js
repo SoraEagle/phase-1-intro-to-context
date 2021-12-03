@@ -1,20 +1,16 @@
-// Your code here
 /*
-Employees always check in and out on the hour.
-Time is represented on a 24-hour clock (1300 is 1 PM).
-Timestamps will be provided as Strings in the form "YYYY-MM-DD HHMM".
-Employees will never work across days
+    Employees always check in and out on the hour
+    Timestamps provided as Strings "YYYY-MM-DD HHMM"
+    Employees will never work across days
 
 Bonus Challenges:
-Raise an exception if a timeIn is without a matching timeOut.
-Figure out how to turn a timestamp into a construct that allows handling cross-day times and
-    end times that aren't on the hour.
-Raising errors if timestamp is in invalid format.*/
+    Raise an exception if a timeIn is without a matching timeOut
+    Figure out how to turn a timestamp into a construct that allows handling cross-day times and
+        end times that aren't on the hour
+    Raising errors if timestamp is in invalid format*/
 /*
 Function Signatures:
     calculatePayroll:
-        Argument:
-            Array of employee records
         Returns:
             Sum of pay owed to all employees for all dates, as number
         Behavior:
@@ -38,7 +34,7 @@ Current Time Complexity:
     calculatePayroll:
         O()
 */
-function createEmployeeRecord(array){
+function createEmployeeRecord(array){ //Object that will be used as an argument/parameter for other functions.
     let employee = {
         firstName: array[0],
         familyName: array[1],
@@ -51,20 +47,18 @@ function createEmployeeRecord(array){
     return employee;
 }
 
-function createEmployeeRecords(arrays){
+function createEmployeeRecords(arrays){ //Array of Arrays.
     return arrays.map(element => createEmployeeRecord(element));
 }
 
-//YYYY-MM-DD     H  H  M  M
-//0123456789 10 11 12 13 14
-function createTimeInEvent(employee, time){
+function createTimeInEvent(employee, time){ //
     let timeInStamp = {
         type: "TimeIn",
         hour: parseInt(time.substr(11, 4)), //Ensure the hour variable is a number.
         date: time.substr(0, 10)
     };
 
-    employee.timeInEvents.push(timeInStamp);
+    employee.timeInEvents.push(timeInStamp); //Put timeInStamp into timeInEvents Array.
     return employee;
 }
 
@@ -105,12 +99,28 @@ function allWagesFor(employee){
 }
 
 function calculatePayroll(array){
-    //Array of employee records
-    let employees = array.map(element => createEmployeeRecord(element));
+    //Array OF employee records
+    let employees = array.map(employee => ({
+        firstName: employee.firstName, 
+        familyName: employee.familyName,
+        title: employee.title,
+        payPerHour: employee.payPerHour
+    }));
     console.log(employees);
+    
+    //for (const wages of employees)Loop?
+    //Calculate employee's total wages using allWagesFor
+    //allWagesFor(employee)
+    //use .reduce to find total wages for all employees(payroll)
+    //return 
+    
+    //return payroll
+
     //Using wagesEarnedOnDate, accumulate value of all dates worked by employee in record used as context
     //return sum of pay owed to ALL employees on all dates, as single sum
     //use .reduce to create this sum
-    // let payroll = .reduce();
+    // let payroll = .reduce({
+        //
+    //}, 0);
     //return parseInt(payroll);
 }

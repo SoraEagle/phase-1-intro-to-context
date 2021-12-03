@@ -104,9 +104,7 @@ function calculatePayroll(array){
         firstName: employee.firstName, 
         familyName: employee.familyName,
         title: employee.title,
-        payPerHour: employee.payPerHour,
-        // timeInEvents: employee.timeInEvents,
-        // timeOutEvents: employee.timeOutEvents
+        payPerHour: employee.payPerHour
     }));
     console.log(employees);
     
